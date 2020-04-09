@@ -202,23 +202,23 @@ class Calendar extends Component {
   getMarkingLabel(day) {
     let label = '';
     const marking = this.getDateMarking(day);
-    
+
     if (marking.accessibilityLabel) {
       return marking.accessibilityLabel;
     }
-    
+
     if (marking.selected) {
       label += 'selected ';
       if (!marking.marked) {
         label += 'You have no entries for this day ';
       }
-    } 
+    }
     if (marking.marked) {
       label += 'You have entries for this day ';
-    } 
+    }
     if (marking.startingDay) {
       label += 'period start ';
-    } 
+    }
     if (marking.endingDay) {
       label += 'period end ';
     }
@@ -262,14 +262,16 @@ class Calendar extends Component {
 
   renderWeekNumber(weekNumber) {
     return (
-      <Day 
-        key={`week-${weekNumber}`} 
-        theme={this.props.theme} 
-        marking={{disableTouchEvent: true}} 
-        state='disabled'
-      >
-        {weekNumber}
-      </Day>
+      <View style={{flex: 1, alignItems: 'center'}} key={`week-${weekNumber}`}>
+        <Day
+          key={`week-${weekNumber}`}
+          theme={this.props.theme}
+          marking={{disableTouchEvent: true}}
+          state='disabled'
+        >
+          {weekNumber}
+        </Day>
+      </View>
     );
   }
 
